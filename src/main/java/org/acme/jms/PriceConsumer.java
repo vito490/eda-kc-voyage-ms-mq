@@ -15,6 +15,7 @@ import javax.jms.Session;
 
 import io.quarkus.runtime.ShutdownEvent;
 import io.quarkus.runtime.StartupEvent;
+import org.jboss.logging.Logger;
 
 /**
  * A bean consuming prices from the JMS queue.
@@ -26,6 +27,8 @@ public class PriceConsumer implements Runnable {
     ConnectionFactory connectionFactory;
 
     private final ExecutorService scheduler = Executors.newSingleThreadExecutor();
+
+    private static final Logger log = Logger.getLogger(PriceConsumer.class);
 
     private volatile String lastPrice;
 
@@ -44,13 +47,14 @@ public class PriceConsumer implements Runnable {
     @Override
     public void run() {
         try (JMSContext context = connectionFactory.createContext(Session.AUTO_ACKNOWLEDGE)) {
-            JMSConsumer consumer = context.createConsumer(context.createQueue("prices"));
+            JMSConsumer consumer = context.createConsumer(context.createQueue("DEV.QUEUE.1"));
             while (true) {
                 Message message = consumer.receive();
                 if (message == null) {
                     // receive returns `null` if the JMSConsumer is closed
                     return;
                 }
+                log.info("received message from queue... " + message.getBody(String.class));
                 lastPrice = message.getBody(String.class);
             }
         } catch (JMSException e) {
