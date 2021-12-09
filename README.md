@@ -25,9 +25,9 @@ Then, open your browser to [http://localhost:8080/prices.html](http://localhost:
 
 In addition to the [prices.html](src/main/resources/META-INF/resources/prices.html) page, the application is composed by 3 components:
 
-* `PriceProducer` - the [PriceProducer](src/main/java/org/acme/jms/PriceProducer.java) sends random prices to a JMS queue.
-* `PriceConsumer` - the [PriceConsumer](src/main/java/org/acme/jms/PriceConsumer.java) receives the JMS message and stores the last price.
-* `PriceResource`  - the [PriceResource](src/main/java/org/acme/jms/PriceResource.java) gets the latest price from the PriceConsumer and returns it to the browser.
+* `PriceProducer` - the [PriceProducer](src/main/java/ibm/gse/voyagems/PriceProducer.java) sends random prices to a JMS queue.
+* `PriceConsumer` - the [PriceConsumer](src/main/java/ibm/gse/voyagems/PriceConsumer.java) receives the JMS message and stores the last price.
+* `PriceResource`  - the [PriceResource](src/main/java/ibm/gse/voyagems/PriceResource.java) gets the latest price from the PriceConsumer and returns it to the browser.
 
 The client configuration is located in the [application.properties](src/main/resources/application.properties) configuration file.
 
