@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ibm.gse.voyagems.domain.model.EventBase;
 import ibm.gse.voyagems.domain.model.voyage.VoyageAssignedEvent;
 import ibm.gse.voyagems.domain.model.voyage.VoyageAssignmentPayload;
-import ibm.gse.voyagems.domain.model.voyage.VoyageNotFoundEvent;
 import io.quarkus.runtime.ShutdownEvent;
 import io.quarkus.runtime.StartupEvent;
 import io.vertx.core.json.JsonObject;
